@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace hash01
 {
-   
+// Path.GetFullpath("TextFile1.txt");
     class Program
     {
         static void Main(string[] args)
@@ -18,7 +18,7 @@ namespace hash01
                 textIn = Console.ReadLine();
 
             // Convertim l'string a un array de bytes
-            byte[] bytesIn = Encoding.UTF8.GetBytes(textIn);
+            byte[] bytesIn = Encoding.UTF8.GetBytes(TextFile1.txt);
             // Instanciar classe per fer hash
             SHA512Managed SHA512 = new SHA512Managed();
             // Calcular hash
