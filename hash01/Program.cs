@@ -13,36 +13,37 @@ namespace hash01
         {
             string route;
             string TextFileToHash;
+            string outputPath = "TextFile1.SHA";
+            string outputRoute;
 
-            try {
+            try
+            {
 
-                route = Path.GetFullPath("ytyt");
+                route = Path.GetFullPath("TextFile1.txt");
                 TextFileToHash = File.ReadAllText(route);
-
-                // Convertim l'string a un array de bytes
                 byte[] bytesIn = Encoding.UTF8.GetBytes(TextFileToHash);
-                // Instanciar classe per fer hash
                 SHA512Managed SHA512 = new SHA512Managed();
-                // Calcular hash
                 byte[] hashResult = SHA512.ComputeHash(bytesIn);
 
-                // Si volem mostrar el hash per pantalla o guardar-lo en un arxiu de text
-                // cal convertir-lo a un string
-
                 String textOut = BitConverter.ToString(hashResult).Replace("-", string.Empty);
+                File.WriteAllText(outputPath, textOut);
                 Console.WriteLine("Hash del text {0}", TextFileToHash);
                 Console.WriteLine(textOut);
-                
+                outputRoute = Path.GetFullPath(outputPath);
+                Console.WriteLine("La ruta del nou archiu es:  {0}", outputRoute);
+
 
                 // Eliminem la classe instanciada
                 SHA512.Dispose();
             }
-            catch (FileNotFoundException e) {
+            catch (FileNotFoundException e)
+            {
                 // FileNotFoundException
                 Console.WriteLine("{0} File ------->NOT<--------------- found", e);
             }
 
             Console.ReadKey();
+
 
 
 
